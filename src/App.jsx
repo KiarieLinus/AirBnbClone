@@ -1,22 +1,29 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Card
+import Card from './components/Card'
+import data from './data'
 
-  from './components/Card'
 function App() {
+
+  const cards = data.map(item => {
+    return (
+      <Card
+        key={item.id}
+        item={item}
+        /**use spread syntax too {...item} */
+      />
+    )
+  })
+
   return (
     <div className="App">
       <Navbar />
-      {/* <Hero /> */}
-      <Card
-        img="katie.png"
-        rating="5.0"
-        reviewCount={6}
-        country="USA"
-        title="Life Lessons with Katie Zaferes"
-        price={136}
-      />
+      <Hero />
+      <section className='cards-list'>
+        {cards}
+      </section>
+
     </div>
   )
 }
